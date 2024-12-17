@@ -3,7 +3,7 @@ const helmet = require('helmet');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require("cors");
-const UserRoute = require('./routes/UserRoute');
+const UserRoute = require('./src/routes/UserRoute');
 const cookieParser = require('cookie-parser');
 // express app
 const app = express();
