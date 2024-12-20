@@ -1,32 +1,34 @@
 const Joi = require('joi');
 
-
-// Password Validation Schema
 exports.signupSchema = Joi.object({
-	email: Joi.string()
-		.email({ tlds: { allow: ['com', 'net'] } })
-		.required(),
-	password: Joi.string()
-		.min(8)
-		.max(128)
-		.pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
-		.required()
-		.messages({
-			"string.pattern.base": "Password must contain at least one uppercase letter, one lowercase letter, and one number.",
-			"string.min": "Password must be at least 8 characters long.",
-		}),
+    firstName: Joi.string().min(1).max(20).optional(),
+    lastName: Joi.string().min(1).max(20).optional(),
+    username: Joi.string().min(1).max(40).optional(),
+    email: Joi.string()
+        .email({ tlds: { allow: ['com', 'ai', 'us', 'net'] } })
+        .required(),
+    password: Joi.string()
+        .min(8)
+        .max(20)
+        .pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
+        .required()
+        .messages({
+            "string.pattern.base": "Password must contain at least one uppercase letter, one lowercase letter, and one number.",
+            "string.min": "Password must be at least 8 characters long.",
+        }),
 });
-exports.signinSchema = Joi.object({
+
+exports.loginSchema = Joi.object({
 	email: Joi.string()
 		.min(6)
-		.max(60)
+		.max(40)
 		.required()
 		.email({
-			tlds: { allow: ['com', 'net'] },
+			tlds: { allow: ['com', 'ai', 'us', 'net'] },
 		}),
 	password: Joi.string()
 		.required()
-		.pattern(new RegExp(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)),
+		.pattern(new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)),
 
 });
 
@@ -36,7 +38,7 @@ exports.acceptCodeSchema = Joi.object({
 		.max(60)
 		.required()
 		.email({
-			tlds: { allow: ['com', 'net'] },
+			tlds: { allow: ['com', 'ai', 'us', 'net'] },
 		}),
 	providedCode: Joi.number().required(),
 });

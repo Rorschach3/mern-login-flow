@@ -3,8 +3,9 @@ const helmet = require('helmet');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require("cors");
-const UserRoute = require('./src/routes/UserRoute');
+const router = require('./src/routes/UserRoute');
 const cookieParser = require('cookie-parser');
+const connectDB = require("./db/connectDB");
 // express app
 const app = express();
 
@@ -27,11 +28,13 @@ mongoose.connect(process.env.MONGODB_URI)
         console.log(error)
     });
 
+connectDB();
+
 // routes
-app.use('/api/user', UserRoute);
+app.use('/api/user', router);
 
 app.get('/', (req, res) => {
-    res.json({message: "Hello from the server!"})
+    res.json({message: "Health OK!"})
 });
 
 app.use((req, res, next) => {

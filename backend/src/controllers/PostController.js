@@ -1,4 +1,4 @@
-const { createPostSchema } = require('../middleware/validator');
+const { createPostSchema } = require('../models/middleware/validator');
 const Post = require('../models/PostModel');
 
 exports.getPosts = async (req, res) => {

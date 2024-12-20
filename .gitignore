@@ -1,0 +1,40 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+.vscode/
+.settings.json
+.zeplin/
+client/src/components/Comp/Overview.tsx
+.vscode
+.settings.json
+.zeplin/
+client/src/components/Comp/Overview.tsx
